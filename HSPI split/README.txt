@@ -1,3 +1,13 @@
+Date: 31/01/2020
+Authors: Mathieu Ribes, Gaspard Russias, Antoine Fournier
+This is a suite of Matlab scripts that allows to create Fourier patterns, acquire and reconstruct hyperspectral single pixel hypercubes.
+This supplementary materials was made available with the article "Towards low-cost hyperspectral single-pixel imaging for plant phenotyping" submitted on 17/01/2020.
+
+Installations instructions :
+-----------------------------------
+Install Ocean Optics wrapper at https://www.oceaninsight.com/support/software-downloads/ (accessed on 31/01/2020)
+
+
 Operating instructions HSPI Split
 -----------------------------------
 
