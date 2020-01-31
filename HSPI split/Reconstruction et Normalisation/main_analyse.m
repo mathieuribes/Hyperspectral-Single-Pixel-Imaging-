@@ -14,15 +14,20 @@ Wavelengths=load('wavelengths.txt');
 half_dimension=((-3+sqrt(9-8*(1-size(Preal,2))))/4);  % Half dimension of the images to reconstruct
 
 %% Hypercube reconstruction
-[reconstructed_image,reconstructed_spectrum] = ReconstructionHypercubes_split(Preal,Pim,half_dimension);
+[reconstructed_image,reconstructed_spectrum] = ReconstructionHypercubes_split(Preal,Pim);
+% Wavelengths cropping
+lambda_min=450; % nm
+lambda_max=750; % nm
+[Wavelengths_cropped,image_cropped]=Wavelengths_cropping(reconstructed_image,Wavelengths,lambda_min,lambda_max);
 
 %% Reflectance normalisation
 % Load reflectance standard data 
-Lref=load('RefBlanc');   % Reflectance standard data
+load('RefBlanc');
+Lref=RefBlanc;   % Reflectance standard data
 Lref(:,2)=Lref(:,2)*100; % Reflectance in percentage
 % Select two pixels inside the reflectance standard zone to normalise
 % hypercubes
-[Wavelengths_utiles,normalised_image]=Flux2Reflectance(reconstructed_image,Wavelengths,Lref);
+normalised_image=Flux2Reflectance(image_cropped,Wavelengths_cropped,Lref);
 
 
 %% Gerbil export
